@@ -364,7 +364,6 @@
     cursor: pointer;
   }
 
-  /* Datalist hint icon */
   .field.has-list { position: relative; }
   .field.has-list::after {
     content: '▾';
@@ -576,6 +575,16 @@
           <datalist id="listaRadicaciones"></datalist>
         </div>
 
+        <div class="field has-list"><label>⛽ Tipo de combustible</label>
+          <input id="combustible" list="listaCombustibles" placeholder="Ej: Nafta" autocomplete="off">
+          <datalist id="listaCombustibles"></datalist>
+        </div>
+
+        <div class="field has-list"><label>⚙️ Tipo de caja</label>
+          <input id="caja" list="listaCajas" placeholder="Ej: Manual" autocomplete="off">
+          <datalist id="listaCajas"></datalist>
+        </div>
+
         <div class="field"><label>N° de Chasis</label>
           <input id="chasis" placeholder="9BR...">
         </div>
@@ -608,7 +617,7 @@
 
         <div class="field" style="grid-column: 1/-1">
           <label>Notas del vehículo</label>
-          <input id="notasVeh" placeholder="Ej: nafta, 1.8, manual">
+          <input id="notasVeh" placeholder="Ej: tiene GNC, cubiertas nuevas">
         </div>
 
       </div>
@@ -682,7 +691,7 @@
 
 <script>
 // ============================================================
-// BASE DE DATOS DE MARCAS Y MODELOS (las más comunes en Argentina)
+// BASE DE DATOS DE MARCAS Y MODELOS
 // ============================================================
 const MARCAS = {
   "Toyota": ["Etios", "Etios Sedán", "Etios Cross", "Etios X", "Etios XEI", "Etios XLS", "Corolla", "Corolla Cross", "Yaris", "Yaris Sedán", "Hilux", "SW4", "RAV4", "Camry", "Prius", "Land Cruiser", "Hiace", "Fortuner", "C-HR", "4Runner"],
@@ -748,6 +757,41 @@ const RADICACIONES = ["CABA", "Buenos Aires", "Catamarca", "Chaco", "Chubut", "C
 
 const SEGUROS = ["La Caja", "Sancor Seguros", "Zurich", "Mapfre", "Federación Patronal", "San Cristóbal", "Rivadavia", "Provincia Seguros", "Banco Nación Seguros", "Allianz", "AXA", "Sura", "Paraná Seguros", "Triunfo Seguros", "Orígenes Seguros", "Berkeley", "Chubb", "Hispanoamericana", "Meridional", "Victoria Seguros", "Milano", "SMG Seguros", "Argos", "Amparo Seguros", "Boston Seguros", "San Isidro", "Omega Seguros", "Antártida", "Alta Seguros", "Mercantil Andina", "Nuevo Siglo", "Royal Seguros", "Santiago Seguros", "Universal Seguros", "Zúrich"];
 
+// ⛽ COMBUSTIBLES
+const COMBUSTIBLES = [
+  "Nafta",
+  "Nafta Súper",
+  "Nafta Premium",
+  "Diésel",
+  "Diésel Premium",
+  "GNC",
+  "Nafta + GNC",
+  "Diésel + GNC",
+  "Híbrido (HEV)",
+  "Híbrido Enchufable (PHEV)",
+  "Eléctrico (BEV)",
+  "Flex (Nafta/Etanol)",
+  "Otro"
+];
+
+// ⚙️ CAJAS
+const CAJAS = [
+  "Manual 5 velocidades",
+  "Manual 6 velocidades",
+  "Automática 4 velocidades",
+  "Automática 5 velocidades",
+  "Automática 6 velocidades",
+  "Automática 7 velocidades",
+  "Automática 8 velocidades",
+  "Automática 9 velocidades",
+  "CVT",
+  "CVT con modo manual",
+  "Doble Embrague (DCT/DSG)",
+  "Automática",
+  "Manual",
+  "Otro"
+];
+
 const AÑO_MIN = 1990;
 const AÑO_MAX = new Date().getFullYear() + 1;
 
@@ -771,6 +815,8 @@ llenarDatalist('listaMarcas', Object.keys(MARCAS));
 llenarDatalist('listaColores', COLORES);
 llenarDatalist('listaRadicaciones', RADICACIONES);
 llenarDatalist('listaSeguros', SEGUROS);
+llenarDatalist('listaCombustibles', COMBUSTIBLES);
+llenarDatalist('listaCajas', CAJAS);
 llenarAños();
 
 // ============================================================
@@ -817,9 +863,11 @@ function guardarVehiculo() {
     modelo: document.getElementById('modelo').value.trim(),
     anio: document.getElementById('anio').value,
     color: document.getElementById('color').value.trim(),
+    radicacion: document.getElementById('radicacion').value.trim(),
+    combustible: document.getElementById('combustible').value.trim(),
+    caja: document.getElementById('caja').value.trim(),
     chasis: document.getElementById('chasis').value.trim(),
     motor: document.getElementById('motor').value.trim(),
-    radicacion: document.getElementById('radicacion').value.trim(),
     propietario: document.getElementById('propietario').value.trim(),
     dni: document.getElementById('dni').value.trim(),
     valuacion: document.getElementById('valuacion').value.trim(),
@@ -846,7 +894,7 @@ function guardarVehiculo() {
 }
 
 function limpiarFormVeh() {
-  ['placa','marca','modelo','color','chasis','motor','radicacion','propietario','dni','valuacion','seguro','foto','notasVeh']
+  ['placa','marca','modelo','color','radicacion','combustible','caja','chasis','motor','propietario','dni','valuacion','seguro','foto','notasVeh']
     .forEach(id => document.getElementById(id).value = '');
   document.getElementById('anio').value = '';
   actualizarModelos();
@@ -862,9 +910,11 @@ function editarVehiculo(id) {
   document.getElementById('modelo').value = v.modelo || '';
   document.getElementById('anio').value = v.anio || '';
   document.getElementById('color').value = v.color || '';
+  document.getElementById('radicacion').value = v.radicacion || '';
+  document.getElementById('combustible').value = v.combustible || '';
+  document.getElementById('caja').value = v.caja || '';
   document.getElementById('chasis').value = v.chasis || '';
   document.getElementById('motor').value = v.motor || '';
-  document.getElementById('radicacion').value = v.radicacion || '';
   document.getElementById('propietario').value = v.propietario || '';
   document.getElementById('dni').value = v.dni || '';
   document.getElementById('valuacion').value = v.valuacion || '';
@@ -1009,6 +1059,8 @@ function buscarVehiculo() {
           ${dato('Modelo', v.modelo)}
           ${dato('Año', v.anio)}
           ${dato('Color', v.color)}
+          ${dato('⛽ Combustible', v.combustible)}
+          ${dato('⚙️ Caja', v.caja)}
           ${dato('N° Chasis', v.chasis)}
           ${dato('N° Motor', v.motor)}
           ${dato('Radicación', v.radicacion)}
