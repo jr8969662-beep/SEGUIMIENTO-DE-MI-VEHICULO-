@@ -165,6 +165,27 @@
     border: 2px solid var(--primary);
     box-shadow: 0 0 25px rgba(239,68,68,.6);
   }
+
+  /* LOGO DE MARCA */
+  .marca-logo-grande {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 20px rgba(239,68,68,.8));
+    flex-shrink: 0;
+    padding: 8px;
+    background: rgba(239,68,68,.08);
+    border-radius: 14px;
+    border: 1.5px solid rgba(239,68,68,.4);
+  }
+  .marca-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(239,68,68,.6));
+    flex-shrink: 0;
+  }
+
   .ficha-placa {
     font-size: 32px;
     font-weight: 800;
@@ -571,6 +592,7 @@
     .ficha-placa { font-size: 26px; }
     .ficha-body { padding: 18px; }
     .ficha-foto { width: 90px; height: 65px; }
+    .marca-logo-grande { width: 60px; height: 60px; padding: 6px; }
     .container { padding: 0 14px; }
     .countdown-num { font-size: 48px; }
     .countdown-tipo { font-size: 18px; }
@@ -614,6 +636,11 @@
     .tramite-row.ok { border-left-color: #0a7 !important; }
     .tramite-row.warn { border-left-color: #b80 !important; }
     .tramite-row.danger { border-left-color: #c00 !important; }
+    .marca-logo-grande {
+      background: transparent !important;
+      border: 1px solid #333 !important;
+      filter: none !important;
+    }
   }
 </style>
 </head>
@@ -814,6 +841,72 @@
 <div class="toast" id="toast"></div>
 
 <script>
+// ============================================================
+// LOGOS DE MARCAS (simple-icons CDN)
+// ============================================================
+const LOGOS = {
+  "Toyota": "toyota",
+  "Volkswagen": "volkswagen",
+  "BMW": "bmw",
+  "Mercedes-Benz": "mercedes",
+  "Audi": "audi",
+  "Ford": "ford",
+  "Honda": "honda",
+  "Hyundai": "hyundai",
+  "Kia": "kia",
+  "Nissan": "nissan",
+  "Peugeot": "peugeot",
+  "Renault": "renault",
+  "Suzuki": "suzuki",
+  "Volvo": "volvo",
+  "Mazda": "mazda",
+  "Mitsubishi": "mitsubishi",
+  "Subaru": "subaru",
+  "Porsche": "porsche",
+  "Ferrari": "ferrari",
+  "Lamborghini": "lamborghini",
+  "Jaguar": "jaguar",
+  "Land Rover": "landrover",
+  "Mini": "mini",
+  "Smart": "smart",
+  "Tesla": "tesla",
+  "Jeep": "jeep",
+  "Fiat": "fiat",
+  "Chevrolet": "chevrolet",
+  "Citroën": "citroen",
+  "Dacia": "dacia",
+  "Alfa Romeo": "alfaromeo",
+  "Aston Martin": "astonmartin",
+  "Bentley": "bentley",
+  "Bugatti": "bugatti",
+  "Dodge": "dodge",
+  "Maserati": "maserati",
+  "Opel": "opel",
+  "Rolls-Royce": "rollsroyce",
+  "Seat": "seat",
+  "Skoda": "skoda",
+  "Tata": "tata",
+  "Lexus": "lexus",
+  "Infiniti": "infiniti",
+  "Acura": "acura",
+  "BYD": "byd",
+  "Chery": "chery",
+  "Isuzu": "isuzu",
+  "Iveco": "iveco",
+  "Ram": "ram",
+  "GMC": "gmc",
+  "Cadillac": "cadillac",
+  "Chrysler": "chrysler",
+  "Hummer": "hummer"
+};
+
+function getLogoURL(marca) {
+  if (!marca) return null;
+  const key = Object.keys(LOGOS).find(k => k.toLowerCase() === marca.toLowerCase().trim());
+  if (!key) return null;
+  return `https://cdn.simpleicons.org/${LOGOS[key]}/ef4444`;
+}
+
 // ============================================================
 // BASE DE DATOS
 // ============================================================
@@ -1229,10 +1322,13 @@ function buscarVehiculo() {
     `;
   }
 
+  const logoURL = getLogoURL(v.marca);
+
   cont.innerHTML = `
     <div class="ficha">
       <div class="ficha-header">
         <div class="ficha-header-content">
+          ${logoURL ? `<img class="marca-logo-grande" src="${logoURL}" alt="${v.marca}" onerror="this.style.display='none'">` : ''}
           ${v.foto ? `<img class="ficha-foto" src="${v.foto}" alt="${v.marca} ${v.modelo}" onerror="this.style.display='none'">` : ''}
           <div>
             <div class="ficha-placa">${v.placa}</div>
@@ -1252,7 +1348,13 @@ function buscarVehiculo() {
 
         <div class="ficha-section-title">📋 Datos del vehículo</div>
         <div class="ficha-grid">
-          ${dato('Marca', v.marca)}
+          <div class="dato">
+            <div class="dato-label">Marca</div>
+            <div class="dato-value" style="display:flex;align-items:center;gap:10px">
+              ${logoURL ? `<img class="marca-logo" src="${logoURL}" alt="${v.marca}" onerror="this.style.display='none'">` : ''}
+              <span>${v.marca || '—'}</span>
+            </div>
+          </div>
           ${dato('Modelo', v.modelo)}
           ${dato('Año', v.anio)}
           ${dato('Color', v.color)}
