@@ -36,7 +36,6 @@
     padding-bottom: 60px;
     min-height: 100vh;
   }
-
   header {
     background: linear-gradient(135deg, #0a0a0a 0%, #1a0808 50%, #0a0a0a 100%);
     border-bottom: 1px solid var(--border);
@@ -79,7 +78,6 @@
     text-shadow: 0 0 20px rgba(239,68,68,.3);
   }
   header p { color: var(--text-muted); font-size: 13px; margin-top: 2px; }
-
   .search-main {
     max-width: 1200px;
     margin: -65px auto 0;
@@ -121,13 +119,7 @@
     letter-spacing: 0;
     font-weight: 400;
   }
-
-  .container {
-    max-width: 1200px;
-    margin: 24px auto 0;
-    padding: 0 20px;
-  }
-
+  .container { max-width: 1200px; margin: 24px auto 0; padding: 0 20px; }
   .ficha {
     background: var(--card);
     border: 1.5px solid var(--border);
@@ -165,10 +157,8 @@
     border: 2px solid var(--primary);
     box-shadow: 0 0 25px rgba(239,68,68,.6);
   }
-
   .marca-logo-grande {
-    width: 80px;
-    height: 80px;
+    width: 80px; height: 80px;
     object-fit: contain;
     filter: drop-shadow(0 0 20px rgba(239,68,68,.8));
     flex-shrink: 0;
@@ -178,23 +168,18 @@
     border: 1.5px solid rgba(239,68,68,.4);
   }
   .marca-logo {
-    width: 40px;
-    height: 40px;
+    width: 40px; height: 40px;
     object-fit: contain;
     filter: drop-shadow(0 0 10px rgba(239,68,68,.6));
     flex-shrink: 0;
   }
-
   .ficha-placa {
-    font-size: 32px;
-    font-weight: 800;
-    letter-spacing: .12em;
+    font-size: 32px; font-weight: 800; letter-spacing: .12em;
     color: #fff;
     text-shadow: 0 0 20px rgba(239,68,68,.7), 0 0 40px rgba(239,68,68,.4);
   }
   .ficha-sub { color: var(--text-muted); font-size: 14px; margin-top: 4px; }
   .ficha-actions { display: flex; gap: 8px; flex-wrap: wrap; }
-
   .countdown {
     padding: 24px;
     display: flex;
@@ -210,11 +195,8 @@
   .countdown.danger { border-bottom-color: var(--danger); background: linear-gradient(135deg, #1a0808, #2a0a0a); }
   .countdown-left { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
   .countdown-num {
-    font-size: 68px;
-    font-weight: 800;
-    line-height: 1;
-    color: #fff;
-    letter-spacing: -.04em;
+    font-size: 68px; font-weight: 800; line-height: 1;
+    color: #fff; letter-spacing: -.04em;
     text-shadow: 0 0 30px currentColor;
   }
   .countdown.ok .countdown-num { color: #4ade80; }
@@ -226,7 +208,6 @@
   .countdown-right { text-align: right; }
   .countdown-total-label { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); font-weight: 700; }
   .countdown-total { font-size: 24px; font-weight: 800; color: #fff; text-shadow: 0 0 20px rgba(239,68,68,.5); }
-
   .ficha-body { padding: 24px; }
   .ficha-grid {
     display: grid;
@@ -248,74 +229,50 @@
   .dato.alert-danger { border-left-color: var(--danger); background: rgba(239,68,68,.08); }
   .dato.alert-ok { border-left-color: var(--success); background: rgba(34,197,94,.05); }
   .dato-label {
-    font-size: 10px;
-    font-weight: 700;
+    font-size: 10px; font-weight: 700;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: .08em;
   }
   .dato-value { font-size: 15px; font-weight: 600; color: #fff; word-break: break-word; }
   .dato-value.vacio { color: #3a3a3a; font-weight: 400; font-style: italic; }
-
   .ficha-section-title {
-    font-size: 13px;
-    font-weight: 700;
-    color: #fff;
+    font-size: 13px; font-weight: 700; color: #fff;
     margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-transform: uppercase;
-    letter-spacing: .08em;
+    display: flex; align-items: center; gap: 8px;
+    text-transform: uppercase; letter-spacing: .08em;
   }
   .ficha-section-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
+    content: ''; flex: 1; height: 1px;
     background: linear-gradient(90deg, var(--primary), transparent);
     margin-left: 8px;
   }
-
-  .filtros {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 16px;
-  }
+  .filtros { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
   .chip {
     padding: 8px 16px;
     border-radius: 999px;
     background: transparent;
     border: 1.5px solid var(--border);
     color: var(--text-muted);
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .05em;
-    cursor: pointer;
-    transition: all .15s;
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .05em;
+    cursor: pointer; transition: all .15s;
     font-family: inherit;
   }
   .chip:hover { border-color: var(--primary); color: #fff; }
   .chip.active {
-    background: var(--primary);
-    border-color: var(--primary);
-    color: #fff;
+    background: var(--primary); border-color: var(--primary); color: #fff;
     box-shadow: 0 0 15px rgba(239,68,68,.5);
   }
-
   .tramite-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex; justify-content: space-between; align-items: center;
     padding: 14px 16px;
     background: var(--card-2);
     border-radius: 10px;
     margin-bottom: 8px;
     border: 1px solid var(--border);
     border-left: 4px solid var(--border);
-    flex-wrap: wrap;
-    gap: 12px;
+    flex-wrap: wrap; gap: 12px;
     transition: all .2s;
   }
   .tramite-row:hover { background: #202020; transform: translateX(2px); }
@@ -326,36 +283,26 @@
   .tramite-tipo { font-weight: 700; font-size: 14px; color: #fff; }
   .tramite-fecha { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
   .tramite-importe {
-    font-weight: 700;
-    font-size: 15px;
-    color: #fff;
+    font-weight: 700; font-size: 15px; color: #fff;
     font-variant-numeric: tabular-nums;
     text-align: right;
     text-shadow: 0 0 12px rgba(239,68,68,.3);
   }
   .badge {
-    padding: 4px 10px;
-    border-radius: 999px;
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .06em;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
+    padding: 4px 10px; border-radius: 999px;
+    font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em;
+    display: inline-flex; align-items: center; gap: 5px;
     border: 1px solid currentColor;
   }
   .badge::before {
-    content: '';
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: currentColor;
+    content: ''; width: 6px; height: 6px;
+    border-radius: 50%; background: currentColor;
     box-shadow: 0 0 8px currentColor;
   }
   .badge.ok { background: var(--success-bg); color: #4ade80; }
   .badge.warn { background: var(--warning-bg); color: #fbbf24; }
   .badge.danger { background: var(--danger-bg); color: #f87171; }
-
   .card {
     background: var(--card);
     border: 1px solid var(--border);
@@ -367,34 +314,25 @@
   }
   .card:hover { border-color: #3a3a3a; }
   .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex; justify-content: space-between; align-items: center;
     padding: 16px 22px;
     border-bottom: 1px solid var(--border);
-    cursor: pointer;
-    user-select: none;
+    cursor: pointer; user-select: none;
     transition: background .15s;
   }
   .card-header:hover { background: var(--card-2); }
   .card-title {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 15px;
-    font-weight: 600;
-    color: #fff;
+    display: flex; align-items: center; gap: 10px;
+    font-size: 15px; font-weight: 600; color: #fff;
   }
   .chevron {
     transition: transform .25s;
-    color: var(--primary);
-    font-size: 12px;
+    color: var(--primary); font-size: 12px;
     filter: drop-shadow(0 0 6px rgba(239,68,68,.6));
   }
   .card.collapsed .chevron { transform: rotate(-90deg); }
   .card-body { padding: 22px; display: grid; gap: 14px; }
   .card.collapsed .card-body { display: none; }
-
   .form-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
@@ -402,11 +340,9 @@
   }
   .field { display: flex; flex-direction: column; gap: 6px; }
   .field label {
-    font-size: 10px;
-    font-weight: 700;
+    font-size: 10px; font-weight: 700;
     color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: .08em;
+    text-transform: uppercase; letter-spacing: .08em;
   }
   input, select, textarea {
     padding: 11px 14px;
@@ -425,9 +361,7 @@
     box-shadow: 0 0 12px rgba(239,68,68,.3), inset 0 0 12px rgba(239,68,68,.08);
   }
   input:focus, select:focus, textarea:focus {
-    outline: none;
-    border-color: #ff5555;
-    background: #150808;
+    outline: none; border-color: #ff5555; background: #150808;
     box-shadow: 0 0 0 3px rgba(239,68,68,.2), 0 0 25px rgba(239,68,68,.5), inset 0 0 15px rgba(239,68,68,.1);
   }
   select {
@@ -439,41 +373,27 @@
     padding-right: 38px;
   }
   select option { background: #0f0f0f; color: #fff; }
-
   input[type="date"]::-webkit-calendar-picker-indicator {
     filter: invert(1) sepia(1) saturate(5) hue-rotate(330deg);
     cursor: pointer;
   }
-
   .field.has-list { position: relative; }
   .field.has-list::after {
-    content: '▾';
-    position: absolute;
-    right: 14px;
-    bottom: 12px;
-    color: var(--primary);
-    font-size: 12px;
+    content: '▾'; position: absolute;
+    right: 14px; bottom: 12px;
+    color: var(--primary); font-size: 12px;
     pointer-events: none;
     filter: drop-shadow(0 0 4px rgba(239,68,68,.6));
   }
   .field.has-list input { padding-right: 34px; }
-
   button {
     padding: 11px 18px;
-    border: none;
-    border-radius: 10px;
-    font-size: 12px;
-    font-family: inherit;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all .15s;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    white-space: nowrap;
-    text-transform: uppercase;
-    letter-spacing: .04em;
+    border: none; border-radius: 10px;
+    font-size: 12px; font-family: inherit; font-weight: 700;
+    cursor: pointer; transition: all .15s;
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 6px; white-space: nowrap;
+    text-transform: uppercase; letter-spacing: .04em;
   }
   .btn-primary {
     background: linear-gradient(135deg, var(--primary), var(--primary-dark));
@@ -487,8 +407,7 @@
     box-shadow: 0 0 30px rgba(239,68,68,.7), 0 6px 16px rgba(0,0,0,.5);
   }
   .btn-outline {
-    background: transparent;
-    color: #fff;
+    background: transparent; color: #fff;
     border: 1.5px solid var(--primary);
     box-shadow: inset 0 0 15px rgba(239,68,68,.1);
   }
@@ -497,77 +416,50 @@
     box-shadow: inset 0 0 20px rgba(239,68,68,.2), 0 0 20px rgba(239,68,68,.3);
   }
   .btn-white {
-    background: rgba(239,68,68,.15);
-    color: #fff;
+    background: rgba(239,68,68,.15); color: #fff;
     border: 1.5px solid var(--primary);
     backdrop-filter: blur(10px);
   }
   .btn-white:hover { background: rgba(239,68,68,.3); box-shadow: 0 0 20px rgba(239,68,68,.5); }
   .btn-icon {
-    padding: 5px 9px;
-    font-size: 12px;
-    background: transparent;
-    color: var(--primary);
-    border-radius: 6px;
-    border: 1px solid transparent;
+    padding: 5px 9px; font-size: 12px;
+    background: transparent; color: var(--primary);
+    border-radius: 6px; border: 1px solid transparent;
   }
   .btn-icon:hover {
-    background: var(--danger-bg);
-    border-color: var(--primary);
+    background: var(--danger-bg); border-color: var(--primary);
     box-shadow: 0 0 12px rgba(239,68,68,.4);
   }
-
-  /* FOTO UPLOAD */
-  .foto-upload {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
+  .foto-upload { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
   .foto-upload input[type="text"] { flex: 1; min-width: 200px; }
   .foto-upload .btn-upload {
-    background: rgba(239,68,68,.15);
-    color: #fff;
+    background: rgba(239,68,68,.15); color: #fff;
     border: 1.5px solid var(--primary);
-    cursor: pointer;
-    padding: 11px 18px;
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: .04em;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: all .15s;
-    white-space: nowrap;
+    cursor: pointer; padding: 11px 18px;
+    border-radius: 10px; font-weight: 700; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .04em;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: all .15s; white-space: nowrap;
   }
   .foto-upload .btn-upload:hover {
     background: rgba(239,68,68,.3);
     box-shadow: 0 0 20px rgba(239,68,68,.5);
   }
   .foto-preview {
-    width: 90px;
-    height: 66px;
-    object-fit: cover;
-    border-radius: 10px;
+    width: 90px; height: 66px;
+    object-fit: cover; border-radius: 10px;
     border: 2px solid var(--primary);
     box-shadow: 0 0 20px rgba(239,68,68,.5);
     display: none;
   }
   .btn-quitar-foto {
-    background: rgba(239,68,68,.15);
-    color: #fff;
+    background: rgba(239,68,68,.15); color: #fff;
     border: 1.5px solid var(--primary);
-    padding: 8px 12px;
-    border-radius: 8px;
-    font-size: 12px;
-    font-weight: 700;
-    cursor: pointer;
+    padding: 8px 12px; border-radius: 8px;
+    font-size: 12px; font-weight: 700; cursor: pointer;
     display: none;
   }
   .btn-quitar-foto:hover { background: rgba(239,68,68,.3); }
-
   .empty { text-align: center; padding: 50px 20px; color: var(--text-muted); }
   .empty-emoji {
     font-size: 54px; display: block; margin-bottom: 12px;
@@ -576,42 +468,28 @@
   }
   .empty-title { font-weight: 700; color: #fff; margin-bottom: 6px; font-size: 17px; }
   .empty-sub { font-size: 14px; }
-
   .toast {
-    position: fixed;
-    bottom: 24px;
-    left: 50%;
+    position: fixed; bottom: 24px; left: 50%;
     transform: translateX(-50%) translateY(100px);
-    background: #1a0808;
-    color: #fff;
-    padding: 12px 22px;
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: 600;
+    background: #1a0808; color: #fff;
+    padding: 12px 22px; border-radius: 10px;
+    font-size: 14px; font-weight: 600;
     border: 1.5px solid var(--primary);
     box-shadow: 0 0 30px rgba(239,68,68,.6), 0 10px 25px rgba(0,0,0,.6);
-    opacity: 0;
-    transition: all .3s;
-    z-index: 1000;
+    opacity: 0; transition: all .3s; z-index: 1000;
   }
   .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-
   ::-webkit-scrollbar { width: 10px; height: 10px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--primary-dark); border-radius: 5px; border: 2px solid var(--bg); }
   ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
-
   .total-box {
-    margin-top: 20px;
-    padding: 18px;
+    margin-top: 20px; padding: 18px;
     background: linear-gradient(135deg, rgba(239,68,68,.08), rgba(239,68,68,.02));
     border: 1.5px solid var(--primary);
     border-radius: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
     box-shadow: inset 0 0 30px rgba(239,68,68,.08);
   }
   .total-label {
@@ -622,17 +500,13 @@
     font-size: 24px; font-weight: 800; color: #fff;
     text-shadow: 0 0 20px rgba(239,68,68,.6);
   }
-
   .notas-box {
     background: var(--card-2);
     border-left: 3px solid var(--primary);
-    padding: 14px 16px;
-    border-radius: 8px;
-    font-size: 14px;
-    margin-bottom: 24px;
+    padding: 14px 16px; border-radius: 8px;
+    font-size: 14px; margin-bottom: 24px;
     color: #e5e5e5;
   }
-
   @media (max-width: 640px) {
     header { padding: 22px 16px 80px; }
     .search-box { padding: 14px; gap: 8px; }
@@ -646,7 +520,6 @@
     .countdown-tipo { font-size: 18px; }
     .countdown { padding: 18px; gap: 14px; }
   }
-
   @media print {
     @page { margin: 1cm; size: A4; }
     body { background: #fff !important; color: #000 !important; padding: 0 !important; }
@@ -660,10 +533,8 @@
     .countdown-num, .countdown-tipo, .countdown-total { color: #000 !important; text-shadow: none !important; }
     .countdown-label, .countdown-fecha, .countdown-total-label { color: #555 !important; }
     .ficha-body, .dato, .tramite-row, .total-box, .notas-box {
-      background: #fff !important;
-      color: #000 !important;
-      border-color: #ccc !important;
-      box-shadow: none !important;
+      background: #fff !important; color: #000 !important;
+      border-color: #ccc !important; box-shadow: none !important;
     }
     .dato { border-left: 3px solid #666 !important; }
     .dato-value, .tramite-tipo, .tramite-importe, .total-value { color: #000 !important; text-shadow: none !important; }
@@ -711,70 +582,55 @@
     </div>
     <div class="card-body">
       <div class="form-grid">
-
         <div class="field"><label>Dominio / Placa *</label>
           <input id="placa" placeholder="ABC123" maxlength="10">
         </div>
-
         <div class="field has-list"><label>Marca *</label>
           <input id="marca" list="listaMarcas" placeholder="Ej: Toyota" autocomplete="off">
           <datalist id="listaMarcas"></datalist>
         </div>
-
         <div class="field has-list"><label>Modelo</label>
           <input id="modelo" list="listaModelos" placeholder="Ej: Etios" autocomplete="off">
           <datalist id="listaModelos"></datalist>
         </div>
-
         <div class="field"><label>Año</label>
           <select id="anio"><option value="">— Seleccionar —</option></select>
         </div>
-
         <div class="field has-list"><label>Color</label>
           <input id="color" list="listaColores" placeholder="Ej: Rojo" autocomplete="off">
           <datalist id="listaColores"></datalist>
         </div>
-
         <div class="field has-list"><label>Radicación</label>
           <input id="radicacion" list="listaRadicaciones" placeholder="Ej: CABA" autocomplete="off">
           <datalist id="listaRadicaciones"></datalist>
         </div>
-
         <div class="field has-list"><label>⛽ Combustible</label>
           <input id="combustible" list="listaCombustibles" placeholder="Ej: Nafta" autocomplete="off">
           <datalist id="listaCombustibles"></datalist>
         </div>
-
         <div class="field has-list"><label>⚙️ Tipo de caja</label>
           <input id="caja" list="listaCajas" placeholder="Ej: Manual" autocomplete="off">
           <datalist id="listaCajas"></datalist>
         </div>
-
         <div class="field"><label>N° de Chasis</label>
           <input id="chasis" placeholder="9BR...">
         </div>
-
         <div class="field"><label>N° de Motor</label>
           <input id="motor" placeholder="1ZZ...">
         </div>
-
         <div class="field"><label>Propietario</label>
           <input id="propietario" placeholder="Juan Pérez">
         </div>
-
         <div class="field"><label>DNI / CUIT</label>
           <input id="dni" placeholder="20.123.456">
         </div>
-
         <div class="field"><label>Valuación fiscal</label>
           <input id="valuacion" type="number" placeholder="5000000">
         </div>
-
         <div class="field has-list"><label>Compañía de seguro</label>
           <input id="seguro" list="listaSeguros" placeholder="Ej: La Caja" autocomplete="off">
           <datalist id="listaSeguros"></datalist>
         </div>
-
         <div class="field" style="grid-column: 1/-1">
           <label>📸 Foto del vehículo</label>
           <div class="foto-upload">
@@ -837,15 +693,11 @@
         <div class="field"><label>Vehículo</label>
           <select id="vehiculoSel"></select>
         </div>
-<div class="field"><label>Tipo de trámite</label>
-  <select id="tipoDoc">
-    <option>SEGURO DE PATENTE</option>
-    <option>SEGURO DEL AUTOMOTOR</option>
-    <option>EXTINTOR</option>
-    <option>RTO</option>
-    <option>LICENCIA DE CONDUCIR</option>
-  </select>
-</div>
+        <div class="field"><label>Tipo de trámite</label>
+          <select id="tipoDoc">
+            <option value="">-- Selecciona vehículo primero --</option>
+          </select>
+        </div>
         <div class="field"><label>Fecha de vencimiento</label>
           <input id="fechaVenc" type="date">
         </div>
@@ -880,62 +732,22 @@
 
 <script>
 // ============================================================
-// LOGOS DE MARCAS (simple-icons CDN)
+// LOGOS DE MARCAS
 // ============================================================
 const LOGOS = {
-  "Toyota": "toyota",
-  "Volkswagen": "volkswagen",
-  "BMW": "bmw",
-  "Mercedes-Benz": "mercedes",
-  "Audi": "audi",
-  "Ford": "ford",
-  "Honda": "honda",
-  "Hyundai": "hyundai",
-  "Kia": "kia",
-  "Nissan": "nissan",
-  "Peugeot": "peugeot",
-  "Renault": "renault",
-  "Suzuki": "suzuki",
-  "Volvo": "volvo",
-  "Mazda": "mazda",
-  "Mitsubishi": "mitsubishi",
-  "Subaru": "subaru",
-  "Porsche": "porsche",
-  "Ferrari": "ferrari",
-  "Lamborghini": "lamborghini",
-  "Jaguar": "jaguar",
-  "Land Rover": "landrover",
-  "Mini": "mini",
-  "Smart": "smart",
-  "Tesla": "tesla",
-  "Jeep": "jeep",
-  "Fiat": "fiat",
-  "Chevrolet": "chevrolet",
-  "Citroën": "citroen",
-  "Dacia": "dacia",
-  "Alfa Romeo": "alfaromeo",
-  "Aston Martin": "astonmartin",
-  "Bentley": "bentley",
-  "Bugatti": "bugatti",
-  "Dodge": "dodge",
-  "Maserati": "maserati",
-  "Opel": "opel",
-  "Rolls-Royce": "rollsroyce",
-  "Seat": "seat",
-  "Skoda": "skoda",
-  "Tata": "tata",
-  "Lexus": "lexus",
-  "Infiniti": "infiniti",
-  "Acura": "acura",
-  "BYD": "byd",
-  "Chery": "chery",
-  "Isuzu": "isuzu",
-  "Iveco": "iveco",
-  "Ram": "ram",
-  "GMC": "gmc",
-  "Cadillac": "cadillac",
-  "Chrysler": "chrysler",
-  "Hummer": "hummer"
+  "Toyota": "toyota", "Volkswagen": "volkswagen", "BMW": "bmw", "Mercedes-Benz": "mercedes",
+  "Audi": "audi", "Ford": "ford", "Honda": "honda", "Hyundai": "hyundai", "Kia": "kia",
+  "Nissan": "nissan", "Peugeot": "peugeot", "Renault": "renault", "Suzuki": "suzuki",
+  "Volvo": "volvo", "Mazda": "mazda", "Mitsubishi": "mitsubishi", "Subaru": "subaru",
+  "Porsche": "porsche", "Ferrari": "ferrari", "Lamborghini": "lamborghini", "Jaguar": "jaguar",
+  "Land Rover": "landrover", "Mini": "mini", "Smart": "smart", "Tesla": "tesla", "Jeep": "jeep",
+  "Fiat": "fiat", "Chevrolet": "chevrolet", "Citroën": "citroen", "Dacia": "dacia",
+  "Alfa Romeo": "alfaromeo", "Aston Martin": "astonmartin", "Bentley": "bentley",
+  "Bugatti": "bugatti", "Dodge": "dodge", "Maserati": "maserati", "Opel": "opel",
+  "Rolls-Royce": "rollsroyce", "Seat": "seat", "Skoda": "skoda", "Tata": "tata",
+  "Lexus": "lexus", "Infiniti": "infiniti", "Acura": "acura", "BYD": "byd", "Chery": "chery",
+  "Isuzu": "isuzu", "Iveco": "iveco", "Ram": "ram", "GMC": "gmc", "Cadillac": "cadillac",
+  "Chrysler": "chrysler", "Hummer": "hummer"
 };
 
 function getLogoURL(marca) {
@@ -944,6 +756,17 @@ function getLogoURL(marca) {
   if (!key) return null;
   return `https://cdn.simpleicons.org/${LOGOS[key]}/ef4444`;
 }
+
+// ============================================================
+// TIPOS DE TRÁMITE
+// ============================================================
+const TIPOS_TRAMITE = [
+  "SEGURO DE PATENTE",
+  "SEGURO DEL AUTOMOTOR",
+  "EXTINTOR",
+  "RTO",
+  "LICENCIA DE CONDUCIR"
+];
 
 // ============================================================
 // BASE DE DATOS
@@ -1039,27 +862,23 @@ function actualizarModelos() {
 document.getElementById('marca').addEventListener('input', actualizarModelos);
 
 // ============================================================
-// FOTO: SUBIR Y PREVISUALIZAR
+// FOTO
 // ============================================================
 function cargarFoto(e) {
   const file = e.target.files[0];
   if (!file) return;
-
   const reader = new FileReader();
   reader.onload = ev => {
     const img = new Image();
     img.onload = () => {
-      // Redimensionar a máx 800px de ancho para no llenar el localStorage
       const maxW = 800;
       const canvas = document.createElement('canvas');
       let w = img.width, h = img.height;
       if (w > maxW) { h = Math.round(h * maxW / w); w = maxW; }
-      canvas.width = w;
-      canvas.height = h;
+      canvas.width = w; canvas.height = h;
       const ctx = canvas.getContext('2d');
       ctx.drawImage(img, 0, 0, w, h);
       const dataUrl = canvas.toDataURL('image/jpeg', 0.82);
-
       document.getElementById('foto').value = dataUrl;
       mostrarPreview(dataUrl);
       toast('✅ Foto cargada. Guardá el vehículo');
@@ -1213,6 +1032,7 @@ function agregarTramite() {
   const notas = document.getElementById('notas').value.trim();
 
   if (!vehiculoId) return toast('⚠️ Selecciona un vehículo');
+  if (!tipo) return toast('⚠️ Selecciona un tipo de trámite');
   if (!fecha) return toast('⚠️ Ingresa la fecha de vencimiento');
 
   data.tramites.push({ id: Date.now(), vehiculoId, tipo, fecha, importe, notas });
@@ -1220,6 +1040,7 @@ function agregarTramite() {
   document.getElementById('fechaVenc').value = '';
   document.getElementById('importe').value = '';
   document.getElementById('notas').value = '';
+  refrescarTiposTramite();
   render();
   toast('✅ Trámite registrado');
 }
@@ -1228,6 +1049,7 @@ function eliminarTramite(id) {
   if (!confirm('¿Eliminar este trámite?')) return;
   data.tramites = data.tramites.filter(t => t.id !== id);
   guardar();
+  refrescarTiposTramite();
   render();
   toast('🗑️ Trámite eliminado');
 }
@@ -1236,10 +1058,36 @@ function refrescarSelect() {
   const sel = document.getElementById('vehiculoSel');
   if (!data.vehiculos.length) {
     sel.innerHTML = '<option value="">-- Primero registra un vehículo --</option>';
+    document.getElementById('tipoDoc').innerHTML = '<option value="">-- Sin vehículos --</option>';
     return;
   }
   sel.innerHTML = '<option value="">-- Selecciona vehículo --</option>' +
     data.vehiculos.map(v => `<option value="${v.id}">${v.placa} · ${v.marca} ${v.modelo}</option>`).join('');
+  refrescarTiposTramite();
+}
+
+function refrescarTiposTramite() {
+  const vehId = +document.getElementById('vehiculoSel').value;
+  const sel = document.getElementById('tipoDoc');
+
+  if (!vehId) {
+    sel.innerHTML = '<option value="">-- Selecciona vehículo primero --</option>';
+    return;
+  }
+
+  const yaRegistrados = data.tramites
+    .filter(t => t.vehiculoId === vehId)
+    .map(t => t.tipo);
+
+  const disponibles = TIPOS_TRAMITE.filter(t => !yaRegistrados.includes(t));
+
+  if (!disponibles.length) {
+    sel.innerHTML = '<option value="">-- Todos los trámites ya están registrados --</option>';
+    return;
+  }
+
+  sel.innerHTML = '<option value="">-- Selecciona tipo --</option>' +
+    disponibles.map(t => `<option value="${t}">${t}</option>`).join('');
 }
 
 // ============================================================
@@ -1430,7 +1278,6 @@ function buscarVehiculo() {
       ${bannerHTML}
 
       <div class="ficha-body">
-
         <div class="ficha-section-title">📋 Datos del vehículo</div>
         <div class="ficha-grid">
           <div class="dato">
@@ -1507,7 +1354,6 @@ function buscarVehiculo() {
             </div>` : ''}
           </div>
         ` : ''}
-
       </div>
     </div>
   `;
@@ -1555,6 +1401,34 @@ function importar(e) {
   reader.readAsText(file);
   e.target.value = '';
 }
+
+// ============================================================
+// LISTENERS
+// ============================================================
+document.getElementById('vehiculoSel').addEventListener('change', refrescarTiposTramite);
+
+document.getElementById('tipoDoc').addEventListener('change', function() {
+  const tipo = this.value;
+  if (!tipo) return;
+
+  const previos = data.tramites.filter(t => t.tipo === tipo).sort((a, b) => b.id - a.id);
+
+  if (previos.length) {
+    const ult = previos[0];
+
+    if (ult.importe && !document.getElementById('importe').value) {
+      document.getElementById('importe').value = ult.importe;
+    }
+
+    if (ult.fecha && !document.getElementById('fechaVenc').value) {
+      const d = new Date(ult.fecha + 'T00:00:00');
+      d.setFullYear(d.getFullYear() + 1);
+      document.getElementById('fechaVenc').value = d.toISOString().slice(0, 10);
+    }
+
+    toast('ℹ️ Datos precargados del último registro');
+  }
+});
 
 document.getElementById('buscarDominio').addEventListener('input', buscarVehiculo);
 
