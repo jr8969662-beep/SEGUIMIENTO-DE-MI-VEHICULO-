@@ -166,7 +166,6 @@
     box-shadow: 0 0 25px rgba(239,68,68,.6);
   }
 
-  /* LOGO DE MARCA */
   .marca-logo-grande {
     width: 80px;
     height: 80px;
@@ -196,7 +195,6 @@
   .ficha-sub { color: var(--text-muted); font-size: 14px; margin-top: 4px; }
   .ficha-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 
-  /* COUNTDOWN BANNER */
   .countdown {
     padding: 24px;
     display: flex;
@@ -278,7 +276,6 @@
     margin-left: 8px;
   }
 
-  /* FILTROS */
   .filtros {
     display: flex;
     gap: 8px;
@@ -520,6 +517,57 @@
     box-shadow: 0 0 12px rgba(239,68,68,.4);
   }
 
+  /* FOTO UPLOAD */
+  .foto-upload {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .foto-upload input[type="text"] { flex: 1; min-width: 200px; }
+  .foto-upload .btn-upload {
+    background: rgba(239,68,68,.15);
+    color: #fff;
+    border: 1.5px solid var(--primary);
+    cursor: pointer;
+    padding: 11px 18px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all .15s;
+    white-space: nowrap;
+  }
+  .foto-upload .btn-upload:hover {
+    background: rgba(239,68,68,.3);
+    box-shadow: 0 0 20px rgba(239,68,68,.5);
+  }
+  .foto-preview {
+    width: 90px;
+    height: 66px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid var(--primary);
+    box-shadow: 0 0 20px rgba(239,68,68,.5);
+    display: none;
+  }
+  .btn-quitar-foto {
+    background: rgba(239,68,68,.15);
+    color: #fff;
+    border: 1.5px solid var(--primary);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    display: none;
+  }
+  .btn-quitar-foto:hover { background: rgba(239,68,68,.3); }
+
   .empty { text-align: center; padding: 50px 20px; color: var(--text-muted); }
   .empty-emoji {
     font-size: 54px; display: block; margin-bottom: 12px;
@@ -599,22 +647,13 @@
     .countdown { padding: 18px; gap: 14px; }
   }
 
-  /* ========== PRINT ========== */
   @media print {
     @page { margin: 1cm; size: A4; }
-    body {
-      background: #fff !important;
-      color: #000 !important;
-      padding: 0 !important;
-    }
+    body { background: #fff !important; color: #000 !important; padding: 0 !important; }
     header, .search-main, .card, .toast, .ficha-actions, .btn-print, .filtros, .btn-icon { display: none !important; }
     .container { padding: 0 !important; max-width: 100% !important; margin: 0 !important; }
     .ficha { box-shadow: none !important; border: 1px solid #999 !important; border-radius: 6px !important; }
-    .ficha-header {
-      background: #f0f0f0 !important;
-      border-bottom: 2px solid #333 !important;
-      color: #000 !important;
-    }
+    .ficha-header { background: #f0f0f0 !important; border-bottom: 2px solid #333 !important; color: #000 !important; }
     .ficha-header::after { display: none; }
     .ficha-placa, .ficha-sub { color: #000 !important; text-shadow: none !important; }
     .countdown { background: #f8f8f8 !important; border-bottom: 2px solid #333 !important; color: #000 !important; }
@@ -636,11 +675,7 @@
     .tramite-row.ok { border-left-color: #0a7 !important; }
     .tramite-row.warn { border-left-color: #b80 !important; }
     .tramite-row.danger { border-left-color: #c00 !important; }
-    .marca-logo-grande {
-      background: transparent !important;
-      border: 1px solid #333 !important;
-      filter: none !important;
-    }
+    .marca-logo-grande { background: transparent !important; border: 1px solid #333 !important; filter: none !important; }
   }
 </style>
 </head>
@@ -696,7 +731,7 @@
         </div>
 
         <div class="field has-list"><label>Color</label>
-          <input id="color" list="listaColores" placeholder="Ej: Blanco" autocomplete="off">
+          <input id="color" list="listaColores" placeholder="Ej: Rojo" autocomplete="off">
           <datalist id="listaColores"></datalist>
         </div>
 
@@ -741,8 +776,16 @@
         </div>
 
         <div class="field" style="grid-column: 1/-1">
-          <label>URL o nombre de foto (opcional)</label>
-          <input id="foto" placeholder="Ej: etios.jpg.png o  https://...">
+          <label>📸 Foto del vehículo</label>
+          <div class="foto-upload">
+            <input id="foto" type="text" placeholder="Pegá una URL o subí una foto →">
+            <label class="btn-upload">
+              📁 Subir desde el dispositivo
+              <input type="file" id="fotoFile" accept="image/*" style="display:none" onchange="cargarFoto(event)">
+            </label>
+            <img id="fotoPreview" class="foto-preview" alt="Preview">
+            <button type="button" class="btn-quitar-foto" id="btnQuitarFoto" onclick="quitarFoto()">✕ Quitar</button>
+          </div>
         </div>
       </div>
 
@@ -1001,6 +1044,58 @@ function actualizarModelos() {
 document.getElementById('marca').addEventListener('input', actualizarModelos);
 
 // ============================================================
+// FOTO: SUBIR Y PREVISUALIZAR
+// ============================================================
+function cargarFoto(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const img = new Image();
+    img.onload = () => {
+      // Redimensionar a máx 800px de ancho para no llenar el localStorage
+      const maxW = 800;
+      const canvas = document.createElement('canvas');
+      let w = img.width, h = img.height;
+      if (w > maxW) { h = Math.round(h * maxW / w); w = maxW; }
+      canvas.width = w;
+      canvas.height = h;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, w, h);
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.82);
+
+      document.getElementById('foto').value = dataUrl;
+      mostrarPreview(dataUrl);
+      toast('✅ Foto cargada. Guardá el vehículo');
+    };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function mostrarPreview(src) {
+  const img = document.getElementById('fotoPreview');
+  const btn = document.getElementById('btnQuitarFoto');
+  if (src) {
+    img.src = src;
+    img.style.display = 'block';
+    btn.style.display = 'inline-flex';
+  } else {
+    img.removeAttribute('src');
+    img.style.display = 'none';
+    btn.style.display = 'none';
+  }
+}
+
+function quitarFoto() {
+  document.getElementById('foto').value = '';
+  document.getElementById('fotoFile').value = '';
+  mostrarPreview('');
+  toast('🗑️ Foto quitada');
+}
+
+// ============================================================
 // DATOS
 // ============================================================
 let data = JSON.parse(localStorage.getItem('misVehiculos') || '{"vehiculos":[],"tramites":[]}');
@@ -1071,6 +1166,8 @@ function limpiarFormVeh() {
   ['placa','marca','modelo','color','radicacion','combustible','caja','chasis','motor','propietario','dni','valuacion','seguro','foto','notasVeh','kmActual','kmProximoService','fechaProximoService','seguroMensual','fechaVencimientoCuota']
     .forEach(id => document.getElementById(id).value = '');
   document.getElementById('anio').value = '';
+  document.getElementById('fotoFile').value = '';
+  mostrarPreview('');
   actualizarModelos();
 }
 
@@ -1083,6 +1180,7 @@ function editarVehiculo(id) {
   actualizarModelos();
   campos.forEach(c => document.getElementById(c).value = v[c] || '');
   document.getElementById('anio').value = v.anio || '';
+  mostrarPreview(v.foto || '');
   document.getElementById('tituloVehiculo').textContent = 'Editar Vehículo';
   document.getElementById('btnGuardarVeh').textContent = '💾 Actualizar Vehículo';
   document.getElementById('btnCancelar').style.display = 'inline-flex';
@@ -1197,13 +1295,11 @@ function buscarVehiculo() {
     return;
   }
 
-  // Preparar trámites
   const todosTramites = data.tramites
     .filter(t => t.vehiculoId === v.id)
     .map(t => ({ ...t, dias: diasRestantes(t.fecha), est: estado(diasRestantes(t.fecha)) }))
     .sort((a, b) => a.dias - b.dias);
 
-  // Filtrar según chip
   const tramites = todosTramites.filter(t => {
     if (filtroTramites === 'todos') return true;
     if (filtroTramites === 'vigente') return t.dias > 30;
@@ -1214,7 +1310,6 @@ function buscarVehiculo() {
 
   const totalImportes = todosTramites.reduce((s, t) => s + (Number(t.importe) || 0), 0);
 
-  // Service
   let serviceInfo = null;
   if (v.kmProximoService) {
     const kmFaltan = Number(v.kmProximoService) - Number(v.kmActual || 0);
@@ -1225,7 +1320,6 @@ function buscarVehiculo() {
     serviceInfo = { kmFaltan, dias, clase };
   }
 
-  // Cuota seguro
   let cuotaInfo = null;
   if (v.fechaVencimientoCuota) {
     const dias = diasRestantes(v.fechaVencimientoCuota);
@@ -1233,7 +1327,6 @@ function buscarVehiculo() {
     cuotaInfo = { dias, est };
   }
 
-  // Próximo vencimiento general (para banner countdown)
   const candidatos = [];
   todosTramites.forEach(t => candidatos.push({ tipo: t.tipo, fecha: t.fecha, dias: t.dias, emoji: '📄' }));
   if (v.fechaProximoService) {
@@ -1244,7 +1337,6 @@ function buscarVehiculo() {
   }
   const proximo = candidatos.length ? candidatos.sort((a, b) => a.dias - b.dias)[0] : null;
 
-  // Banner countdown
   let bannerHTML = '';
   if (proximo) {
     const est = estado(proximo.dias);
@@ -1275,7 +1367,6 @@ function buscarVehiculo() {
     `;
   }
 
-  // HTML Service
   let serviceHTML = '';
   if (v.kmActual || v.kmProximoService || v.fechaProximoService) {
     serviceHTML = `
@@ -1298,7 +1389,6 @@ function buscarVehiculo() {
     `;
   }
 
-  // HTML Seguro
   let seguroHTML = '';
   if (v.seguro || v.seguroMensual || v.fechaVencimientoCuota) {
     seguroHTML = `
